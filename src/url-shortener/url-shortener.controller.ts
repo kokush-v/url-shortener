@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Get,
-  Ip,
   Param,
   Post,
   Redirect,
@@ -30,10 +29,8 @@ export class UrlShortenerController {
   async shortUrl(
     @Body()
     { url }: CreateUrlShortenerDto,
-    @Ip() ip: string,
   ): Promise<CreateUrlShortenerResponse> {
     const response = await this.urlShortenerService.createShortUrl(url);
-    console.log(ip);
     return { shortUrl: response.shortUrl };
   }
 

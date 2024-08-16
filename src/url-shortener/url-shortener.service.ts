@@ -70,7 +70,6 @@ export class UrlShortenerService {
           code,
         },
       });
-      console.log('url', url);
       await this.cacheService.set(code, url);
 
       return url;

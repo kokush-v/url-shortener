@@ -1,23 +1,11 @@
 import { Module } from '@nestjs/common';
-import { CacheModule } from '@nestjs/cache-manager';
-import * as redisStore from 'cache-manager-redis-store';
-import { redisHost, redisPort } from './constants';
 import { UrlShortenerModule } from './url-shortener/url-shortener.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { CacheModule } from './modules/cache.module';
+import { RateLimitModule } from './modules/rate-limit.module';
 
 @Module({
-  imports: [
-    CacheModule.register({
-      isGlobal: true,
-      store: redisStore,
-      host: redisHost,
-      port: redisPort,
-      ttl: 60,
-      max: 100,
-    }),
-    UrlShortenerModule,
-    PrismaModule,
-  ],
+  imports: [UrlShortenerModule, PrismaModule, CacheModule, RateLimitModule],
   controllers: [],
 })
 export class AppModule {}
