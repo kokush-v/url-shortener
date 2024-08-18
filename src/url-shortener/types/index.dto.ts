@@ -1,4 +1,5 @@
 import { host, port } from '@/constants';
+import { generateShortUrl } from '@/utils';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUrlShortenerDto {
@@ -12,7 +13,7 @@ export class CreateUrlShortenerDto {
 export class CreateUrlShortenerResponseDto {
   @ApiProperty({
     description: 'The shortened URL',
-    example: `http://${host}:${port}/10275782`,
+    example: generateShortUrl('10275782', host, port),
   })
   shortUrl: string;
 }
