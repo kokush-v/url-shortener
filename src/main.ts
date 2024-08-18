@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { host, port } from './constants';
+import { host, isDev, port } from './constants';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap(): Promise<void> {
@@ -17,6 +17,6 @@ async function bootstrap(): Promise<void> {
   SwaggerModule.setup('api-info', app, document);
 
   await app.listen(port);
-  console.log(`Server is running on http://${host}:${port}`);
+  console.log(`Server is running on http://${host}${isDev ? `:${port}` : ''}`);
 }
 bootstrap();

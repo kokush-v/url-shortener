@@ -1,4 +1,5 @@
 import { host, port } from '@/constants';
+import { generateShortUrl } from '@/utils';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { Prisma, PrismaClient, UrlModel } from '@prisma/client';
@@ -25,7 +26,7 @@ export class UrlShortenerService {
     }
 
     const code = uuidv4().split('-')[0];
-    const shortUrl = `http://${host}:${port}/${code}`;
+    const shortUrl = generateShortUrl(code, host, port);
 
     const response = await this.urlRepository.create({
       data: {
