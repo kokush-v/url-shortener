@@ -1,5 +1,5 @@
 import { PipeTransform, BadRequestException } from '@nestjs/common';
-import { UrlSchema } from '../url-shortener/types/url-shortener';
+import { UrlSchema } from '../url-shortener/types/index.types';
 
 export class ValidatorPipe<T> implements PipeTransform<T> {
   public transform(value: T): T {

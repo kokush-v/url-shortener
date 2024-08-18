@@ -12,3 +12,11 @@ export const rateLimitConfig: ThrottlerConfig = {
   ttl: 60, // seconds
   redisUrl: `redis://${redisHost}:${redisPort}`,
 };
+
+export const getStatsExample = {
+  id: '66c25d4b17d54f754d39e8d1',
+  url: 'https://www.google.com',
+  code: '10275782',
+  shortUrl: 'http://localhost:3001/10275782',
+  redirectsCount: 1,
+};
